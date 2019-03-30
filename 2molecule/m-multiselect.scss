@@ -1,0 +1,50 @@
+
+@mixin icon($icon) {
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: $icon;
+}
+
+.m-multiselect {
+    &__checkbox {
+      width: auto;
+      display: inline-block;
+      cursor: pointer;
+      // @extend fancy border
+      border: 1px solid black;
+      border-radius: 24px;
+      padding: 2px 20px;
+      margin: 0 2px 17px;
+    }
+
+    .a-label--checkbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0 auto;
+        font-size: 27px;
+
+        //auslagern bidde
+        &::before {
+            @include icon("\f067");
+            transition: transform .3s ease-in-out;
+            padding-right: 16px;
+        }
+    }
+
+    .a-checkbox {
+        position: absolute;
+        opacity: 0;
+
+        &:checked + label::before {
+            @include icon("\f00c");
+            // content: "\f00c";
+            transform: rotate(-360deg);
+            transition: transform .3s ease-in-out;
+        }
+    }
+}
